@@ -37,8 +37,8 @@ To configure the service to start on reboot, execute the following:
 ```sh
 chmod +x configure-service.sh
 ./configure-service.sh "./homelab-portainer.service" "WorkingDirectory" $(pwd)
-sudo ln -s homelab-portainer.service /etc/systemd/system/homelab-portainer.service
+sudo ln -sf "$(pwd)/homelab-portainer/homelab-portainer.service" /etc/systemd/system/homelab-portainer.service
 sudo systemctl daemon-reload
-sudo systemctl enable homelab-portainer.service
 sudo systemctl start homelab-portainer.service
+sudo systemctl enable homelab-portainer.service
 ```
