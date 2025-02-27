@@ -31,3 +31,14 @@ To manage your second machine:
 Now, Portainer on your **server** will manage both machines! 🚀
 
 For more details regarding the setup of the remote (using TLS or not), follow the instructions [here](./configure-remote.md).
+
+## Autostart
+To configure the service to start on reboot, execute the following:
+```sh
+chmod +x configure-service.sh
+./configure-service.sh "./homelab-portainer.service" "WorkingDirectory" $(pwd)
+sudo ln -s homelab-portainer.service /etc/systemd/system/homelab-portainer.service
+sudo systemctl daemon-reload
+sudo systemctl enable homelab-portainer.service
+sudo systemctl start homelab-portainer.service
+```
